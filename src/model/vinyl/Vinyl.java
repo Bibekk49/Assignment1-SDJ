@@ -58,5 +58,9 @@ public class Vinyl
   {
     vinylState.returnVinyl(this);
   }
+  public String getVinylStateNameAsString()
+  {
+    return vinylState.getVinylStateName().toString();
+  }
 }
 

@@ -1,5 +1,6 @@
 package model.vinyl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VinylList
@@ -22,8 +23,24 @@ public class VinylList
     return "Cannot remove a vinyl that is on " + currentState;
 
   }
+
+
+  private void initList()
+  {
+    vinylList = new ArrayList<>();
+    for (int i = 0; i < 10; i++)
+    {
+      vinylList.add(new Vinyl(title[i % (title.length)], artists[i % (artists.length)],
+          (1960 + (i * 2))));
+    }
+
+  }
+
   public List<Vinyl> getAllVinyls()
   {
+    if (vinylList == null) {
+      initList();
+    }
     return vinylList;
   }
 }

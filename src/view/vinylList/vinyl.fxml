@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.vinylList.VinylController">
    <children>
-      <TableView layoutY="-1.0" prefHeight="393.0" prefWidth="610.0">
+      <TableView fx:id="tableView" layoutY="-1.0" prefHeight="393.0" prefWidth="610.0">
         <columns>
           <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
           <TableColumn fx:id="artist" prefWidth="75.0" text="Artist" />
@@ -28,7 +27,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Next">
+            <Button mnemonicParsing="false" onAction="#next" text="Next">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

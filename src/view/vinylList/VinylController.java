@@ -32,10 +32,10 @@ public class VinylController implements ViewController
     title.setCellValueFactory(new PropertyValueFactory<>("title"));
     artist.setCellValueFactory(new PropertyValueFactory<>("artist"));
     year.setCellValueFactory(new PropertyValueFactory<>("year"));
-    state.setCellValueFactory(new PropertyValueFactory<>("stateName"));
+    state.setCellValueFactory(new PropertyValueFactory<>("vinylStateNameAsString"));
     tableView.setItems(viewModel.getAllVinyls());
   }
-  private void next() {
+ @FXML private void next() {
     if (!vinylSelected()) {
       AlertBox.display("Select a vinyl to continue");
       return;
