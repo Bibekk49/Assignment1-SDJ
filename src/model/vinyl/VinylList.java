@@ -9,7 +9,7 @@ public class VinylList
 
   String title[] = {"Vinyl1", "Vinyl2", "Vinyl3", "Vinyl4", "Vinyl5", "Vinyl6",
       "Vinyl7", "Vinyl8", "Vinyl9", "Vinyl10",};
-  String artists[] = {"Aritist1", "Aritist12", "Aritist3", "Aritist4",
+  String artists[] = {"Aritist1", "Aritist2", "Aritist3", "Aritist4",
       "Aritist5", "Aritist6", "Aritist7", "Aritist8", "Aritist9", "Aritist10",};
 
   public String removeVinyl(Vinyl vinyl)

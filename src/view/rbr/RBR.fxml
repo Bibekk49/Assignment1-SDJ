@@ -14,7 +14,8 @@
               prefWidth="600.0" spacing="50.0">
             <children>
                 <Button alignment="CENTER" contentDisplay="CENTER"
-                        mnemonicParsing="false" prefHeight="43.0"
+                        mnemonicParsing="false" onAction="#reserveVinyl"
+                        prefHeight="43.0"
                         prefWidth="293.0" text="Reserve" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="20.0"/>
@@ -22,6 +23,7 @@
                 </Button>
                 <Button alignment="CENTER" contentDisplay="CENTER"
                         mnemonicParsing="false" prefHeight="43.0"
+                        onAction="#borrowVinyl"
                         prefWidth="293.0" text="Borrow" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="20.0"/>
@@ -29,6 +31,7 @@
                 </Button>
                 <Button alignment="CENTER" contentDisplay="CENTER"
                         mnemonicParsing="false" prefHeight="43.0"
+                        onAction="#returnVinyl"
                         prefWidth="293.0" text="Return" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="20.0"/>
@@ -36,6 +39,7 @@
                 </Button>
                 <Button alignment="CENTER" contentDisplay="CENTER"
                         mnemonicParsing="false" prefHeight="43.0"
+                        onAction="#back"
                         prefWidth="118.0" text="Back" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="20.0"/>

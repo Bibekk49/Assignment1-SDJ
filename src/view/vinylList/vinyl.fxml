@@ -22,7 +22,7 @@
       </TableView>
       <HBox alignment="CENTER" layoutX="-1.0" layoutY="397.0" prefHeight="50.0" prefWidth="610.0" spacing="300.0">
          <children>
-            <Button mnemonicParsing="false" text="Remove">
+            <Button mnemonicParsing="false" onAction="#removeVinyl" text="Remove">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
