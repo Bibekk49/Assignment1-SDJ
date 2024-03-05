@@ -46,4 +46,13 @@ public class VinylController implements ViewController
   private boolean vinylSelected() {
     return tableView.getSelectionModel().getSelectedItem() != null;
   }
+  @FXML
+  private void removeVinyl() {
+    if (!vinylSelected()) {
+      AlertBox.display("Select a vinyl to continue");
+      return;
+    }
+    viewModel.setSelectedVinyl(tableView.getSelectionModel().getSelectedItem());
+    viewModel.removeVinyl();
+  }
 }
