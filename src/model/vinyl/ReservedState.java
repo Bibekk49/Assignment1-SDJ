@@ -4,7 +4,6 @@ public class ReservedState implements VinylState
 {
   @Override public void reserve(Vinyl vinyl)
   {
-
 //already reserved
   }
 
