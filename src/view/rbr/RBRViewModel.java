@@ -1,7 +1,7 @@
 package view.rbr;
 import model.VinylModel;
 import model.vinyl.Vinyl;
-import util.PropertyChange;
+import model.util.PropertyChange;
 import view.AlertBox;
 
 import java.beans.PropertyChangeEvent;
