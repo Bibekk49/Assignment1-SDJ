@@ -6,14 +6,15 @@ import model.VinylModel;
 import model.vinyl.Vinyl;
 import model.util.EventDTO;
 import model.util.PropertyChange;
+import model.vinyl.VinylStateName;
 import view.AlertBox;
 
 import java.beans.PropertyChangeEvent;
 
-public class VinylViewModel
-{
+public class VinylViewModel {
   private VinylModel model;
   private ObservableList<Vinyl> vinyls;
+
   public VinylViewModel(VinylModel model) {
     vinyls = FXCollections.observableArrayList();
     this.model = model;
@@ -46,5 +47,42 @@ public class VinylViewModel
 
   public void removeVinyl() {
     model.removeVinyl(model.getSelectedVinyl());
+  }
+
+  public void borrowVinyl() {
+    Vinyl selectedVinyl = model.getSelectedVinyl();
+    String description = "";
+
+    if (selectedVinyl != null) {
+      if (selectedVinyl.getVinylState().getVinylStateName() == VinylStateName.AVAILABLE
+              || selectedVinyl.getVinylState().getVinylStateName() == VinylStateName.RESERVED) {
+        model.borrowVinyl(selectedVinyl);
+        description = "Vinyl has been borrowed";
+      } else if (selectedVinyl.getVinylState().getVinylStateName() == VinylStateName.BORROWED) {
+        description = "Vinyl is already borrowed";
+      } else {
+        description = "Vinyl cannot be borrowed in the current state.";
+      }
+    }
+
+    AlertBox.display(description);
+  }
+
+  public void returnVinyl() {
+    Vinyl selectedVinyl = model.getSelectedVinyl();
+    String description = "";
+
+    if (selectedVinyl != null) {
+      if (selectedVinyl.getVinylState().getVinylStateName() == VinylStateName.BORROWED) {
+        model.returnVinyl(selectedVinyl);
+        description = "Vinyl has been returned";
+      } else if (selectedVinyl.getVinylState().getVinylStateName() == VinylStateName.AVAILABLE) {
+        description = "Vinyl is already available";
+      } else {
+        description = "Vinyl cannot be returned in the current state.";
+      }
+    }
+
+    AlertBox.display(description);
   }
 }

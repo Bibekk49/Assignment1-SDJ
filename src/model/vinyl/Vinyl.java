@@ -1,5 +1,7 @@
 package model.vinyl;
 
+import view.AlertBox;
+
 public class Vinyl
 {
   private String title;
@@ -44,9 +46,12 @@ public class Vinyl
     return vinylState.getVinylStateName();
   }
 
-  public void borrowVinyl()
-  {
-    vinylState.borrow(this);
+  public void borrowVinyl() {
+    if (vinylState.getVinylStateName() == VinylStateName.RESERVED) {
+      vinylState = new BorrowedAndReservedState();
+    } else {
+      vinylState.borrow(this);
+    }
   }
 
   public void reserveVinyl()
@@ -54,9 +59,20 @@ public class Vinyl
     vinylState.reserve(this);
   }
 
+  public boolean hasReservation() {
+    return vinylState.getVinylStateName() == VinylStateName.RESERVED;
+  }
   public void returnVinyl()
   {
-    vinylState.returnVinyl(this);
+    if (vinylState instanceof AvailableState) {
+      // If the Vinyl is already in AvailableState, show alert message
+      // You can replace the following line with code to display an alert in your GUI
+
+      AlertBox.display("Vinyl is already available.");
+    } else {
+      // If the Vinyl is not in AvailableState, proceed with the normal return logic
+      vinylState.returnVinyl(this);
+    }
   }
   public String getVinylStateNameAsString()
   {
