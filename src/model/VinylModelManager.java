@@ -2,8 +2,8 @@ package model;
 
 import model.vinyl.Vinyl;
 import model.vinyl.VinylList;
-import model.util.EventDTO;
-import model.util.PropertyChange;
+import util.EventDTO;
+import util.PropertyChange;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

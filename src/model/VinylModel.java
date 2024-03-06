@@ -1,7 +1,7 @@
 package model;
 
 import model.vinyl.Vinyl;
-import model.util.PropertyChangeSubject;
+import util.PropertyChangeSubject;
 
 import java.util.List;
 
