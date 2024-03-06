@@ -1,12 +1,14 @@
 package view.vinylList;
 
+import core.ModelFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.VinylModel;
 import model.vinyl.Vinyl;
-import model.util.EventDTO;
-import model.util.PropertyChange;
+import util.EventDTO;
+import util.PropertyChange;
 import view.AlertBox;
+import view.rbr.RBRViewModel;
 
 import java.beans.PropertyChangeEvent;
 
