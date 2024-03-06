@@ -1,8 +1,10 @@
 package view.vinylList;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.VinylModel;
+import model.util.Threads.VinylActionThreads;
 import model.vinyl.Vinyl;
 import model.util.EventDTO;
 import model.util.PropertyChange;
@@ -10,10 +12,16 @@ import model.vinyl.VinylStateName;
 import view.AlertBox;
 
 import java.beans.PropertyChangeEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class VinylViewModel {
   private VinylModel model;
   private ObservableList<Vinyl> vinyls;
+
+
+  private final Logger logger = Logger.getLogger(VinylActionThreads.class.getName());
+
 
   public VinylViewModel(VinylModel model) {
     vinyls = FXCollections.observableArrayList();
@@ -32,8 +40,8 @@ public class VinylViewModel {
     fetchVinyls();
   }
 
-  private boolean fetchVinyls() {
-    return vinyls.setAll(model.getAllVinyls());
+  private void fetchVinyls() {
+    vinyls.setAll(model.getAllVinyls());
   }
 
   public ObservableList<Vinyl> getAllVinyls() {
@@ -49,6 +57,7 @@ public class VinylViewModel {
     model.removeVinyl(model.getSelectedVinyl());
   }
 
+  // Inside VinylViewModel class
   public void borrowVinyl() {
     Vinyl selectedVinyl = model.getSelectedVinyl();
     String description = "";
@@ -66,6 +75,7 @@ public class VinylViewModel {
     }
 
     AlertBox.display(description);
+    logger.log(Level.INFO, description);
   }
 
   public void returnVinyl() {
@@ -84,5 +94,6 @@ public class VinylViewModel {
     }
 
     AlertBox.display(description);
+    logger.log(Level.INFO, description);
   }
 }
