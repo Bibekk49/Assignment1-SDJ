@@ -21,7 +21,7 @@ public class VinylActionThreads extends Thread {
     @Override
     public void run() {
         Random random = new Random();
-        logger.info(threadName + " started.");
+        //logger.info(threadName + " started.");
 
         for (int i = 0; i < 5; i++) { // Perform actions for a certain number of iterations
             try {
@@ -30,20 +30,20 @@ public class VinylActionThreads extends Thread {
 
                 switch (action) {
                     case 0:
-                        System.out.println(threadName + " is reserving Vinyl: " + selectedVinyl.getTitle());
+                       // System.out.println(threadName + " is reserving Vinyl: " + selectedVinyl.getTitle());
                         vinylModel.reserveVinyl(selectedVinyl);
                         break;
                     case 1:
-                        logger.info(threadName + " is performing action: " + action);
-                        System.out.println(threadName + " is borrowing Vinyl: " + selectedVinyl.getTitle());
+                      //  logger.info(threadName + " is performing action: " + action);
+                        //System.out.println(threadName + " is borrowing Vinyl: " + selectedVinyl.getTitle());
                         vinylModel.borrowVinyl(selectedVinyl);
                         break;
                     case 2:
-                        System.out.println(threadName + " is returning Vinyl: " + selectedVinyl.getTitle());
+                       // System.out.println(threadName + " is returning Vinyl: " + selectedVinyl.getTitle());
                         vinylModel.returnVinyl(selectedVinyl);
                         break;
                 }
-                logger.info(threadName + " finished.");
+               // logger.info(threadName + " finished.");
 
                 Thread.sleep(2000); // Sleep for 2 seconds between actions
             } catch (InterruptedException e) {
