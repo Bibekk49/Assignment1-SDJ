@@ -6,9 +6,11 @@ import model.VinylModelManager;
 public class ModelFactory
 {
   private VinylModel model;
+  private ModelFactory modelFactory;
+
   public VinylModel getModel() {
     if (model == null) {
-      model = new VinylModelManager();
+      model = new VinylModelManager(modelFactory);
     }
     return model;
   }

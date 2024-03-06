@@ -1,5 +1,6 @@
 package model;
 
+import core.ModelFactory;
 import model.vinyl.Vinyl;
 import model.vinyl.VinylList;
 import model.util.EventDTO;
@@ -15,7 +16,7 @@ public class VinylModelManager implements VinylModel {
   private Vinyl selectedVinyl;
   private VinylList vinyls;
 
-  public VinylModelManager() {
+  public VinylModelManager(ModelFactory modelFactory) {
     this.support = new PropertyChangeSupport(this);
     vinyls = new VinylList();
   }

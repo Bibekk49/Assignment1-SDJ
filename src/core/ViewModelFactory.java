@@ -13,6 +13,11 @@ public class ViewModelFactory
     this.modelFactory = modelFactory;
 
   }
+
+  public ViewModelFactory() {
+
+  }
+
   public VinylViewModel getVinylViewModel() {
     if (this.vinylViewModel == null) {
       vinylViewModel = new VinylViewModel(modelFactory.getModel());

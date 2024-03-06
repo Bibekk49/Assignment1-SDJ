@@ -1,30 +1,31 @@
+import Threads.VinylActionThreads;
+import core.ModelFactory;
+import core.ViewHandler;
+import core.ViewModelFactory;
 import javafx.application.Application;
-import javafx.application.Platform;
+import javafx.stage.Stage;
+import model.VinylModel;
 
-public class RunVinylApp {
+public class RunVinylApp extends Application {
   public static void main(String[] args) {
-    // Launch the JavaFX application
-    Application.launch(VinylApp.class);
+    launch(args);
+  }
 
-    // Create and start a background thread
-    Runnable backgroundTask = () -> {
-      // Code to be executed in the background thread
-      while (true) {
-        // Simulate some background work
-        System.out.println("Background thread is running...");
-        try {
-          Thread.sleep(1000); // Sleep for 1 second
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-      }
-    };
+  @Override
+  public void start(Stage primaryStage) {
+    ModelFactory modelFactory = new ModelFactory();
+    ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
+    ViewHandler viewHandler = new ViewHandler(viewModelFactory, primaryStage);
 
-    Thread backgroundThread = new Thread(backgroundTask);
-    backgroundThread.setDaemon(true); // Set the thread as a daemon (will terminate when the main thread exits)
-    backgroundThread.start();
+    // Open the main view
+    viewHandler.start();
 
-    // The main thread continues to execute other tasks
-    System.out.println("Main thread continues...");
+    // Start the VinylActionThreads with the VinylModel
+    VinylModel vinylModel = modelFactory.getModel();
+    VinylActionThreads bobThread = new VinylActionThreads(vinylModel, "Bob");
+    VinylActionThreads wendyThread = new VinylActionThreads(vinylModel, "Wendy");
+
+    bobThread.start();
+    wendyThread.start();
   }
 }

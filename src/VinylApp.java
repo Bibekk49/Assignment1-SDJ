@@ -10,7 +10,9 @@ public class VinylApp extends Application
   {
     ModelFactory modelFactory = new ModelFactory();
     ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
-    ViewHandler view = new ViewHandler(viewModelFactory, primaryStage);
-    view.start();
+
+    ViewHandler viewHandler = new ViewHandler(new ViewModelFactory(), primaryStage);
+    viewHandler.start();
+
   }
 }
