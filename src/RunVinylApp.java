@@ -1,4 +1,4 @@
-import model.util.Threads.VinylActionThreads;
+import model.util.VinylActionThreads;
 import core.ModelFactory;
 import core.ViewHandler;
 import core.ViewModelFactory;

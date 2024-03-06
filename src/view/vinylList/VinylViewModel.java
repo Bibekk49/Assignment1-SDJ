@@ -1,10 +1,9 @@
 package view.vinylList;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.VinylModel;
-import model.util.Threads.VinylActionThreads;
+import model.util.VinylActionThreads;
 import model.vinyl.Vinyl;
 import model.util.EventDTO;
 import model.util.PropertyChange;

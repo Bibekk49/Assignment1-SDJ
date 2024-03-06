@@ -1,4 +1,4 @@
-package model.util.Threads;
+package model.util;
 
 import model.VinylModel;
 import model.vinyl.Vinyl;
@@ -21,40 +21,32 @@ public class VinylActionThreads extends Thread {
     @Override
     public void run() {
         Random random = new Random();
-        logger.log(Level.INFO, "{0} started.", threadName);
 
-        for (int i = 0; i < 5; i++) { // Perform actions for a certain number of iterations
+        for (int i = 0; i < 5; i++) {
             try {
                 Vinyl selectedVinyl = getRandomVinyl();
-                int action = random.nextInt(3); // 0: reserve, 1: borrow, 2: return
+                int action = random.nextInt(3);
 
                 switch (action) {
                     case 0:
-                        logger.log(Level.INFO, "{0} is reserving Vinyl: {1}", new Object[]{threadName, selectedVinyl.getTitle()});
                         vinylModel.reserveVinyl(selectedVinyl);
                         break;
                     case 1:
-                        logger.log(Level.INFO, "{0} is performing action: {1}", new Object[]{threadName, action});
-                        logger.log(Level.INFO, "{0} is borrowing Vinyl: {1}", new Object[]{threadName, selectedVinyl.getTitle()});
                         vinylModel.borrowVinyl(selectedVinyl);
                         break;
                     case 2:
-                        logger.log(Level.INFO, "{0} is returning Vinyl: {1}", new Object[]{threadName, selectedVinyl.getTitle()});
                         vinylModel.returnVinyl(selectedVinyl);
                         break;
                 }
 
-                logger.log(Level.INFO, "{0} finished.", threadName);
 
-                Thread.sleep(2000); // Sleep for 2 seconds between actions
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
-                logger.log(Level.SEVERE, "Thread interrupted exception", e);
             }
         }
     }
 
     private Vinyl getRandomVinyl() {
-        // Get a random Vinyl from the model (replace this with your logic)
         return vinylModel.getAllVinyls().get(new Random().nextInt(vinylModel.getAllVinyls().size()));
     }
 }

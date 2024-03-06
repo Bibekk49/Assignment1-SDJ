@@ -1,7 +1,7 @@
 package model;
 
 import core.ModelFactory;
-import model.util.Threads.VinylActionThreads;
+import model.util.VinylActionThreads;
 import model.vinyl.Vinyl;
 import model.vinyl.VinylList;
 import model.util.EventDTO;
@@ -12,7 +12,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 public class VinylModelManager implements VinylModel {
   private PropertyChangeSupport support;
